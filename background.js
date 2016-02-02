@@ -1,8 +1,7 @@
-chrome.app.runtime.onLaunched.addListener(function() {
-  chrome.app.window.create('window.html', {
-    'outerBounds': {
-      'width': 400,
-      'height': 500
-    }
-  });
+chrome.runtime.onMessage.addListener(function (msg, sender) {
+  // First, validate the message's structure
+  if ((msg.from === 'content') && (msg.subject === 'showPageAction')) {
+    // Enable the page-action for the requesting tab
+    chrome.pageAction.show(sender.tab.id);
+  }
 });
