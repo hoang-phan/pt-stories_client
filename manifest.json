@@ -1,12 +1,26 @@
 {
-  "name": "PT Stories",
-  "description": "PT tools for Stories",
-  "version": "0.1",
   "manifest_version": 2,
-  "app": {
-    "background": {
-      "scripts": ["background.js"]
-    }
+  "name": "PT Stories",
+  "description": "PT Stories",
+  "version": "1.0",
+  "browser_action": {
+    "default_icon": "pt_128.png",
+    "default_popup": "window.html"
   },
-  "icons": { "16": "pt_16.png", "128": "pt_128" }
+  "permissions": [
+    "declarativeContent",
+    "activeTab",
+    "tabs",
+    "https://www.pivotaltracker.com/n/projects/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://www.pivotaltracker.com/n/projects/*"],
+      "js": ["jquery.min.js", "content.js"]
+    }
+  ],
+  "icons": {
+    "16": "pt_16.png",
+    "128": "pt_128.png"
+  }
 }
